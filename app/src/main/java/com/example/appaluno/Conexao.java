@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class Conexao extends SQLiteOpenHelper {
 
-    public static final String NOME_DO_BANCO = "DbSQlite.db";
+    public static final String NOME_DO_BANCO = "dbAlunoCriar";
     public static final int VERSAO_DO_BANCO = 1;
 
     public Conexao (@Nullable Context context) {
@@ -18,18 +18,14 @@ public class Conexao extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase db){
 
-            String criar_tabela = "CREATE TABLE tvPessoas(codigo INTEGER PRIMARY KEY, nome VARCHAR, email VARCHAR)";
+            String criar_tabela = "CREATE TABLE tbAluno(codigo INTEGER PRIMARY KEY, nome VARCHAR, email VARCHAR, telefone VARCHAR)";
 
             db.execSQL(criar_tabela);
     }
 
     @Override
-    public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
 
     }
-
-    public void onUprade (SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
-
 }

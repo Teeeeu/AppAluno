@@ -16,33 +16,36 @@ public class MainActivity extends AppCompatActivity {
 
         try{
 
-            SQLiteDatabase bd = openOrCreateDatabase("dbPessoas", MODE_PRIVATE, null);
+            SQLiteDatabase bd = openOrCreateDatabase("tbAluno", MODE_PRIVATE, null);
 
 
-            bd.execSQL("CREATE TABLE IF NOT EXISTS tbPessoa (nome VARCHAR, idade INT(3))");
+            bd.execSQL("CREATE TABLE IF NOT EXISTS tbAluno (nome VARCHAR, email VARCHAR, telefone VARCHAR)");
 
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Renata', 46) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Pedro', 54) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Matheus', 18) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Nilda', 30) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Vitor', 15) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Guilherme', 20) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Regina', 72) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Josefa', 68) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Kaique', 10) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Gabriel', 22) ");
-            bd.execSQL("INSERT INTO tbPessoas(nome,idade) VALUES ('Maria', 83) ");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Renata', 'renata@hotmail.com', '9468998765')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Gabriel', 'gabriel@hotmail.com', '9468991715')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Gabriela', 'gabriela@hotmail.com', '9468968787')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Matheus', 'mrs.11@hotmail.com', '9468993776')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Guilherme', 'midas.brasil@hotmail.com', '9468298748')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Vinicius', 'vinicius1001@hotmail.com', '9468918735')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Pedro', 'pedro@hotmail.com', '9468568784')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Giovanna', 'giovanna@hotmail.com', '9878958734')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Joana', 'joana@hotmail.com', '9418588784')");
+            bd.execSQL("INSERT INTO tbAluno(nome, email, telefone) VALUES ('Luiza', 'luiza@hotmail.com', '9466798751')");
 
-            Cursor cursor =bd.rawQuery("SELECT nome, idade FROM tbPessoas", null);
+
+
+            Cursor cursor =bd.rawQuery("SELECT nome, idade FROM tbAluno", null);
 
             int indiceNome =cursor.getColumnIndex("nome");
-            int indiceIdade =cursor.getColumnIndex("idade");
+            int indiceIdade =cursor.getColumnIndex("email");
+            int indiceTelefone =cursor.getColumnIndex("telefone");
 
             cursor.moveToFirst();
 
             while (cursor != null){
                 Log.i("Resultado do nome: ", cursor.getString(indiceNome));
                 Log.i("Resultado da idade: ", cursor.getString(indiceIdade));
+                Log.i("Resultado do telefone: ", cursor.getString(indiceTelefone));
 
                 cursor.moveToNext();
             }
